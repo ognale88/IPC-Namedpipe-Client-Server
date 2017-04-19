@@ -1,0 +1,79 @@
+﻿<Window x:Class="NamedPipe_Server.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Named Pipe Window" SizeToContent="WidthAndHeight" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800"/>
+        </Grid.ColumnDefinitions>
+        
+        <Expander Grid.Row="0" Grid.Column="0" Header="State" IsEnabled="True">
+            <GroupBox Width="300" Header="Select State of the application">
+                <StackPanel Margin="40,4,4,4" Orientation="Horizontal" >
+                <RadioButton Name="rdbServer" Content="Server" Width="130" Checked="rdbServer_Checked"/>
+                    <RadioButton Name="rdbClient" Content="Client" Checked="rdbClient_Checked"/>
+                </StackPanel>
+            </GroupBox>
+        </Expander>
+        <Expander Grid.Row="1" Grid.Column="0" Header="Server Details" IsEnabled="True" Name="expServer">
+            <Grid Height="50">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="Server Name : " HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Text="NPServer" Margin="2" VerticalContentAlignment="Center" MaxLength="25" Name="txtServer"/>
+                <Button Grid.Column="2" Content="Create Server" Height="25" Margin="2" Name="btnServerCreate" Click="btnServerCreate_Click"/>
+                <Button Grid.Column="3" Content="Close Server" Height="25" Margin="2" Name="btnServerClose" Click="btnServerClose_Click"/>
+                <Label Name="lblStatus" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"/>
+            </Grid>
+        </Expander>
+        <Expander Grid.Row="2" Grid.Column="0" Header="Client Details" IsEnabled="True" Name="expClient" Expanded="expClient_Expanded">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="500"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Content="List of Servers Available : " HorizontalAlignment="Right" />
+                <TextBox Grid.Column="0" Text="192.168.0.146" Name="txtServerInfo"/>
+                <ListBox Grid.Column="1" Name="lstServers" Margin="2" Height="160" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                <Button Grid.Column="2" Content="Connect Server" Margin="2,10,2,2" Name="btnConnectServer" Click="btnConnectServer_Click" Height="25" VerticalAlignment="Top"  Width="100"/>
+                <Button Grid.Column="2" Content="Refersh" Margin="2,40,2,2" Name="btnRefreshServer" Click="btnRefreshServer_Click" Height="25" VerticalAlignment="Top" Width="100"/>
+                <Button Grid.Column="2" Content="Disconnect Server" Margin="2,70,2,2" Name="btnDisconServer" Click="btnDisconServer_Click" Height="25" VerticalAlignment="Top" Width="100" />
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="lblClientStatus"/>
+            </Grid>
+        </Expander>
+        <Expander Grid.Row="3" Grid.Column="0" Header="Work area" IsEnabled="True" Name="expTest" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="650"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Grid.Row="0" Width="640" Margin="2" Name="txtContent" HorizontalAlignment="Left" Height="30"/>
+                <Button Grid.Column="1" Grid.Row="0" Margin="2" Name="btnSend" Content="Send" Width="100" Height="30" Click="btnSend_Click"/>
+                <TextBox Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Name="tblChat" Margin="2" Width="780" Height="290" AcceptsReturn="True"/>
+            </Grid>
+        </Expander>
+    </Grid>
+</Window>
